@@ -15,11 +15,8 @@ export default function Navbar() {
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
+                <div className="collapse d-flex justify-content-end navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link to="/members-list" className="nav-link">Members</Link>
-                    </li>
                     <li className="nav-item">
                         <button onClick={logout} className="nav-link btn btn-danger">Logout</button>
                     </li>
