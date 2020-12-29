@@ -1,7 +1,7 @@
  import './style.css';
 import {  useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../axios/index';
 
 export default function Home() {
     const [members, setMembers] = useState('');
@@ -17,7 +17,7 @@ export default function Home() {
         }
 
         axios({
-            url: 'http://localhost:3100/members',
+            url: '/members',
             method: 'GET',
             headers: {
                 token: token
@@ -25,7 +25,6 @@ export default function Home() {
         })
             .then(({ data }) => {
                 setListMembers(data.members);
-                console.log(data, "<< list members");
             })
             .catch(console.log);
         
@@ -39,7 +38,7 @@ export default function Home() {
         e.preventDefault();
 
         axios({
-            url: 'http://localhost:3100/members',
+            url: '/members',
             method: 'POST',
             headers: {
                 token: token

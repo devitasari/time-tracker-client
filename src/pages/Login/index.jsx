@@ -1,7 +1,7 @@
 import './style.css';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../axios/index';
 
 export default function Login() {
     const [userLogin, setUserLogin] = useState({
@@ -22,7 +22,7 @@ export default function Login() {
         e.preventDefault();
         console.log(userLogin, '<<< submit');
         try {
-            const { data } = await axios.post('http://localhost:3100/users/login', userLogin);
+            const { data } = await axios.post('/users/login', userLogin);
             localStorage.setItem('token', data.token);
             history.push('/');
         } catch (error) {
