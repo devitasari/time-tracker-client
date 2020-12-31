@@ -1,11 +1,11 @@
- import './style.css';
+import './style.css';
 import {  useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from '../../axios/index';
+import Summary from '../../components/summary';
 
 export default function Home() {
     const [members, setMembers] = useState('');
-    const [repo, setRepo] = useState('');
     const [listMembers, setListMembers] = useState([]);
 
     const history = useHistory();
@@ -30,10 +30,6 @@ export default function Home() {
         
     }, [])
 
-    if (listMembers) {
-        console.log(listMembers, "<<< state");
-    }
-
     function onSubmit(e) {
         e.preventDefault();
 
@@ -56,11 +52,6 @@ export default function Home() {
     function onChange(e) {
         const value = e.target.value;
         setMembers(value);
-    }
-
-    function onChange1(e) {
-        const value = e.target.value;
-        setRepo(value);
     }
 
     return (
@@ -95,17 +86,7 @@ export default function Home() {
                     </tbody>
                 </table>
                 </div>
-            </div>
-            <div className="row mt-5">
-                <div className="col-lg-6">
-                    <form>
-                        <div className="mt-3">
-                            <label htmlFor="">Repo</label>
-                            <input type="text" className="form-control" value={repo} onChange={onChange1}/>
-                        </div>
-                        <button type="submit" className="btn btn-primary mt-3">Submit</button>  
-                    </form>
-                </div>
+                <Summary/>
             </div>
         </div>
     )
