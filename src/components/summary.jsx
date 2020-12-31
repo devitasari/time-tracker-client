@@ -7,6 +7,15 @@ export default function Summary() {
     const [repo, setRepo] = useState('');
     const [labels, setLabels] = useState([]);
     const [seconds, setSeconds] = useState([]);
+    let backgroundColor = [];
+    let hoverBackgroundColor = [];
+    // 'rgba(52, 152, 219,1.0)'
+
+    for (let i = 0; i < seconds.length; i++) {
+        const secondToString = seconds[i].toString();
+        backgroundColor.push(`rgba(${secondToString.substring(0,2)}, ${secondToString.substring(1,3)}, ${secondToString.substring(0,3)}, 1.0)`);
+        hoverBackgroundColor.push(`rgba(${secondToString.substring(0,2)}, ${secondToString.substring(1,3)}, ${secondToString.substring(0,3)}, 0.5)`);
+    }
 
     let state;
     if (labels) {
@@ -15,14 +24,8 @@ export default function Summary() {
             datasets: [
                 {
                   label: 'Rainfall',
-                  backgroundColor: [
-                    '#B21F00',
-                    '#C9DE00'
-                  ],
-                  hoverBackgroundColor: [
-                  '#501800',
-                  '#4B5000'
-                  ],
+                  backgroundColor: backgroundColor,
+                  hoverBackgroundColor: hoverBackgroundColor,
                   data: seconds
                 }
               ]
